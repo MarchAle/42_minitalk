@@ -6,12 +6,19 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:43:59 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/19 16:50:30 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:26:44 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-struct s_struct
+#ifndef MINITALK_H
+# define MINITALK_H
+
+typedef struct s_struct
 {
-	int	bit;
-	int	nb_bit;
+	int		pid;
+	int		i;
+	char	*msg;
+	int		current_bit;
 } t_struct;
+
+#endif
