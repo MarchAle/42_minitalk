@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:29:23 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/26 15:39:28 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/26 16:31:42 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	print_msg(int sig, siginfo_t *info, void *context)
 	static int	bit = 0;
 	static int	nb_bit = 0;
 
+	usleep(100);
 	if (sig == SIGUSR2)
 		bit += 1 << nb_bit;
 	nb_bit++;
