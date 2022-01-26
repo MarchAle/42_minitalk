@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:29:23 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/26 14:55:16 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:39:28 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	print_msg(int sig, siginfo_t *info, void *context)
 		nb_bit = 0;
 		bit = 0;
 	}
-	usleep(100);
 	if (kill(info->si_pid, SIGUSR1))
 		exit(EXIT_FAILURE);
 	(void)context;
@@ -72,9 +71,9 @@ int	main(void)
 
 	sa.sa_sigaction = print_msg;
 	sa.sa_flags = SA_RESTART;
-	// sigemptyset(&sa.sa_mask);
-	// sigaddset(&sa.sa_mask, SIGUSR1);
-	// sigaddset(&sa.sa_mask, SIGUSR2);
+	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	ft_printf("Server PID : %d\n", getpid());

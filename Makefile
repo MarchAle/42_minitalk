@@ -6,11 +6,12 @@
 #    By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2022/01/19 13:17:37 by amarchal         ###   ########.fr        #
+#    Updated: 2022/01/26 15:45:18 by amarchal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRV_NAME = server
+
 CLIENT_NAME = client
 
 LIB = ./libft/libft.a
@@ -28,6 +29,7 @@ SRV_OBJS = $(SRV_SRCS:.c=.o)
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 
 CC = gcc
+
 CFLAGS = -Wall -Wextra -Werror
 
 %.o : %.c $(HDRS)
@@ -35,17 +37,17 @@ CFLAGS = -Wall -Wextra -Werror
 	
 all: libft ft_printf $(SRV_NAME) $(CLIENT_NAME)
 
-libtf:
-	make -C ./libtf
+libft:
+	make -C ./libft
 
 ft_printf:
 	make -C ./ft_printf
 
-$(SRV_NAME): $(SRV_OBJS) $(FT_PRINTF) $(LIB)
-		$(CC) $(SRV_OBJS) $(FT_PRINTF) $(LIB) -o $(SRV_NAME)
-
 $(CLIENT_NAME): $(CLIENT_OBJS) $(FT_PRINTF) $(LIB)
 		$(CC) $(CLIENT_OBJS) $(FT_PRINTF) $(LIB) -o $(CLIENT_NAME)
+
+$(SRV_NAME): $(SRV_OBJS) $(FT_PRINTF) $(LIB)
+		$(CC) $(SRV_OBJS) $(FT_PRINTF) $(LIB) -o $(SRV_NAME)
 
 clean:
 		rm -rf $(SRV_OBJS)
@@ -61,4 +63,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re ft_printf
+.PHONY:	all clean fclean re ft_printf libft

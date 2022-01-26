@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:38:16 by amarchal          #+#    #+#             */
-/*   Updated: 2021/11/21 10:59:56 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:57:50 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,12 @@ void	ft_print_format(va_list args, char c, int *pt_count)
 		*pt_count += ft_putstr(va_arg(args, char *));
 	else if (c == 'd' || c == 'i')
 		*pt_count += ft_putnbr_base(va_arg(args, int), "0123456789");
-	else if (c == 'u')
-		*pt_count += ft_putnbr_base_u(va_arg(args, unsigned int), "0123456789");
 	else if (c == 'x')
 		*pt_count += ft_putnbr_base(va_arg(args, unsigned int),
 				"0123456789abcdef");
 	else if (c == 'X')
 		*pt_count += ft_putnbr_base(va_arg(args, unsigned int),
 				"0123456789ABCDEF");
-	else if (c == 'p')
-	{
-		*pt_count += ft_putstr("0x");
-		*pt_count += ft_putnbr_base_u(va_arg(args, unsigned long long),
-				"0123456789abcdef");
-	}
 	else
 		*pt_count += write(1, &c, 1);
 }

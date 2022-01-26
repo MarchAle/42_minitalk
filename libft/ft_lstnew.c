@@ -6,12 +6,11 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 14:44:55 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/17 18:04:52 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:04:27 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../INCLUDES/push_swap.h"
 
 t_list	*ft_lstnew(long content)
 {
@@ -21,8 +20,8 @@ t_list	*ft_lstnew(long content)
 	if (!newlist)
 		return (NULL);
 	newlist->content = content;
-	newlist->higher = FALSE;
-	newlist->wait = FALSE;
+	newlist->higher = 0;
+	newlist->wait = 0;
 	newlist->next = NULL;
 	return (newlist);
 }
