@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:29:08 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/26 16:33:07 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:14:43 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ void	send_next_bit(int sig)
 {
 	usleep(100);
 	if (g_data.msg[g_data.i] & (1 << g_data.current_bit))
-		kill(g_data.pid, SIGUSR2);
+	{
+		if (kill(g_data.pid, SIGUSR2))
+			exit(EXIT_FAILURE);
+	}
 	else
-		kill(g_data.pid, SIGUSR1);
+	{
+		if (kill(g_data.pid, SIGUSR1))
+			exit(EXIT_FAILURE);
+	}
 	g_data.current_bit++;
 	if (g_data.current_bit == 8)
 	{
